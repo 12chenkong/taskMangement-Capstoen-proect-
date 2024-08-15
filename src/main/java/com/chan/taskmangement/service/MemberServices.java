@@ -17,4 +17,8 @@ public class MemberServices {
     public List<Member>FetchAllMembers(){
         return memberRepo.getAllMembers();
     }
+    public Member getMemberById(int id){
+        return memberRepo.getMemberById(id);
+    }
+
 }
