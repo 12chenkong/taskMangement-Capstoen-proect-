@@ -31,4 +31,22 @@ public class TaskRepo {
         };
         return jdbc.query(sql,rowMapper);
     }
+
+    public void insertTasks(Task task){
+        String sql="INSERT INTO daily_task " +
+                "VALUES(?,?,?)";
+        jdbc.update(sql,task.getTask_id(),task.getTask_name(),task.getId_member());
+    }
+
+    //delete one record in table by id
+    public int deleteById(int id){
+        String sql="DELETE FROM daily_task WHERE id_task=?";
+      return   jdbc.update(sql,id);
+    }
+// remove all task in daily_task table
+    public int deleteAllTasks(){
+        String sql="DELETE FROM daily_task";
+       return    jdbc.update(sql);
+    }
+
 }

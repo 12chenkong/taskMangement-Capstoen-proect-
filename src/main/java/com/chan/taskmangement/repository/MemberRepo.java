@@ -57,5 +57,11 @@ public class MemberRepo {
 
   }
 
+  public int insertMember(Member member){
+        String sql="INSERT INTO member " +
+                "VALUES (?,?,?,?,?)";
+      return   jdbc.update(sql,member.getId(),member.getName(),member.getAge(),member.getStatus(),member.getMajor());
+  }
+
 
 }

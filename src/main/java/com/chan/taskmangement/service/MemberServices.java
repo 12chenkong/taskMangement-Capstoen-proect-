@@ -21,4 +21,8 @@ public class MemberServices {
         return memberRepo.getMemberById(id);
     }
 
+    public void addMember(Member member){
+        memberRepo.insertMember(member);
+    }
+
 }

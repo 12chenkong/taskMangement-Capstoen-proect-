@@ -1,7 +1,7 @@
 package com.chan.taskmangement;
 
 import com.chan.taskmangement.model.Member;
-import com.chan.taskmangement.model.StudentTaskInfo;
+import com.chan.taskmangement.model.MemberTaskInfo;
 import com.chan.taskmangement.model.Task;
 import org.nocrala.tools.texttablefmt.BorderStyle;
 import org.nocrala.tools.texttablefmt.CellStyle;
@@ -37,7 +37,7 @@ public class RenderTable {
 
 
   }
-  //This function show only one object
+  //This function show only one searched object
     public static void showOnlyOne(Member members){
         CellStyle cellStyle=new CellStyle(CellStyle.HorizontalAlign.CENTER);
         Table table=new Table(5, BorderStyle.UNICODE_DOUBLE_BOX_WIDE, ShownBorders.SURROUND_HEADER_AND_COLUMNS);
@@ -78,7 +78,7 @@ public class RenderTable {
 
     }
     // show only student and task
-    public static void showTaskStudentInfo(List<StudentTaskInfo> studentTaskInfos){
+    public static void showTaskStudentInfo(List<MemberTaskInfo> studentTaskInfos){
         CellStyle cellStyle=new CellStyle(CellStyle.HorizontalAlign.CENTER);
         Table table=new Table(4, BorderStyle.UNICODE_DOUBLE_BOX_WIDE, ShownBorders.SURROUND_HEADER_AND_COLUMNS);
         table.setColumnWidth(0,5,100);
@@ -89,12 +89,47 @@ public class RenderTable {
         table.addCell("AGE",cellStyle);
         table.addCell("STATUS",cellStyle);
         table.addCell("TASK",cellStyle);
-        for (StudentTaskInfo obj: studentTaskInfos){
+        for (MemberTaskInfo obj: studentTaskInfos){
             table.addCell(String.valueOf(obj.getName()),cellStyle);
             table.addCell(String.valueOf(obj.getAge()),cellStyle);
             table.addCell(String.valueOf(obj.getStatus()),cellStyle);
             table.addCell(String.valueOf(obj.getTask_name()),cellStyle);
         }
+        System.out.println(table.render());
+    }
+    // this table use to show difference choices to use when i first enter the program
+    public static void showChoicesTable(){
+        CellStyle cellStyle=new CellStyle(CellStyle.HorizontalAlign.CENTER);
+        Table table=new Table(2, BorderStyle.UNICODE_DOUBLE_BOX_WIDE, ShownBorders.SURROUND_HEADER_AND_COLUMNS);
+        table.setColumnWidth(0,5,100);
+        table.setColumnWidth(1,10,100 );
+        table.addCell("NO",cellStyle);
+        table.addCell("MENU",cellStyle);
+        table.addCell("1",cellStyle);
+        table.addCell("MEMBER",cellStyle);
+        table.addCell("2",cellStyle);
+        table.addCell("TASK",cellStyle);
+        table.addCell("3",cellStyle);
+        table.addCell("WHO DO TASK",cellStyle);
+        table.addCell("4",cellStyle);
+        table.addCell("EXIT THE PROGRAM",cellStyle);
+        System.out.println(table.render());
+    }
+
+    //Render member choices
+    public static void renderMember(){
+        CellStyle cellStyle=new CellStyle(CellStyle.HorizontalAlign.CENTER);
+        Table table=new Table(2, BorderStyle.UNICODE_DOUBLE_BOX_WIDE, ShownBorders.SURROUND_HEADER_AND_COLUMNS);
+        table.setColumnWidth(0,5,100);
+        table.setColumnWidth(1,10,100 );
+        table.addCell("NO",cellStyle);
+        table.addCell("OPTION",cellStyle);
+        table.addCell("1",cellStyle);
+        table.addCell("ADD MEMBER",cellStyle);
+        table.addCell("2",cellStyle);
+        table.addCell("SHOW MEMBER",cellStyle);
+        table.addCell("3",cellStyle);
+        table.addCell("SEARCH MEMBER",cellStyle);
         System.out.println(table.render());
     }
 

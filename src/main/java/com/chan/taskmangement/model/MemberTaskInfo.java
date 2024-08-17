@@ -5,14 +5,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("Prototype")
-public class StudentTaskInfo {
+public class MemberTaskInfo {
     private int id;
     private String name;
     private  int age;
     private String status;
     private String task_name;
-    public StudentTaskInfo(){}
-    public StudentTaskInfo(int id, String name, int age, String status, String task_name) {
+    public MemberTaskInfo(){}
+    public MemberTaskInfo(int id, String name, int age, String status, String task_name) {
         this.id = id;
         this.name = name;
         this.age = age;

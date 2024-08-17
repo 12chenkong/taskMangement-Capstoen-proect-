@@ -1,6 +1,6 @@
 package com.chan.taskmangement.repository;
 
-import com.chan.taskmangement.model.StudentTaskInfo;
+import com.chan.taskmangement.model.MemberTaskInfo;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -9,20 +9,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 @Repository
-public class StudentTaskRepo {
+public class MemberTaskRepo {
     JdbcTemplate jdbc;
 
-    public StudentTaskRepo(JdbcTemplate jdbc) {
+    public MemberTaskRepo(JdbcTemplate jdbc) {
         this.jdbc = jdbc;
     }
-    public List<StudentTaskInfo> getAllStudAndTask(){
+    public List<MemberTaskInfo> getAllStudAndTask(){
         String sql=" SELECT m.name,m.age,m.status,d.Id_member,d.task_name\n" +
                 "FROM daily_task as d INNER JOIN member as m\n" +
                 "ON d.Id_member=m.id_member";
-        RowMapper<StudentTaskInfo> rowMapper=new RowMapper<StudentTaskInfo>() {
+        RowMapper<MemberTaskInfo> rowMapper=new RowMapper<MemberTaskInfo>() {
             @Override
-            public StudentTaskInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
-                StudentTaskInfo studentTaskInfo=new StudentTaskInfo();
+            public MemberTaskInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
+                MemberTaskInfo studentTaskInfo=new MemberTaskInfo();
                studentTaskInfo.setName(rs.getString("name"));
                studentTaskInfo.setAge(rs.getInt("age"));
                 studentTaskInfo.setStatus(rs.getString("Status"));
